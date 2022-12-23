@@ -1,36 +1,48 @@
 import React, { Children } from 'react';
 import { Navigate, useRoutes } from 'react-router-dom';
+import Library from './layouts/colections/Library';
 import DashboardLayout from './layouts/dashboard/DashboardLayout';
+import ColectionPage from './pages/ColectionPage';
 import DashboardAppPage from './pages/DashboardAppPage';
+import Page404 from './pages/Page404';
+import SearchPage from './pages/SearchPage';
 
 const Router = () => {
     const routes = useRoutes([
-
         { 
-            path: '/dashboard',
+          path: '/',
           element: <DashboardLayout/> ,
           children: [
-            {element: <Navigate to='/dashboard/app'/> },
+            {element: <Navigate to='/app'/>, index : true },
             {
                 path: 'app',
                 element: <DashboardAppPage/>
             },
-            // {
-            //     path: 'user',
-            //     element: <UserPage/>
-            // },
-            // {
-            //     path: 'product',
-            //     element: <ProductPage/>
-            // },
-            // {
-            //     path: 'blog ',
-            //     element: <BlogPage/>
-            // }
+            {
+                path: 'search',
+                element: <SearchPage/>
+            },
+            {
+                path: 'colection',
+                element: <ColectionPage/>,
+                children: [
+                  {
+                    path:'playlist',
+                    element: <Library/>
+                  },
+                  
+
+                ]
+            },
           ]
         },
         {
-
+          path: '404', 
+          element: <Page404 />
+        },
+        {
+          path : '*',
+          element: <Navigate to='/404' replace/>
         }
     ])
     return routes
