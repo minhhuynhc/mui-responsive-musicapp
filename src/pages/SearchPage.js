@@ -12,10 +12,13 @@ import {
 } from "@mui/material";
 import React from "react";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
+import Header from "../layouts/dashboard/header";
 
 const SearchPage = () => {
   const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   return (
+    <>
+    <Header searchHeader = {true}/>
     <div
       style={{
         padding: 20,
@@ -75,6 +78,7 @@ const SearchPage = () => {
         ))}
       </Grid>
     </div>
+    </>
   );
 };
 

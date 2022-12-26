@@ -12,10 +12,12 @@ import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
+import Header from "../layouts/dashboard/header";
 const ColectionPage = () => {
   const data = [];
   return (
     <>
+    <Header/>
       <Box
         sx={{
           paddingTop: 10,

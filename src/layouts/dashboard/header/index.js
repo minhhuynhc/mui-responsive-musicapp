@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { bgBlur } from '../../../utils/cssStyles';
+import Searchbar from './Searchbar';
 
 
 
@@ -11,12 +12,13 @@ const StyledRoot = styled(AppBar)(({theme}) => ({
     boxShadow: 'none',
     width: `calc(100% - ${240}px)`,
 }))
-const Header = () => {
+const Header = ({searchHeader}) => {
     const [hover, setHover] = useState('outlined')
     return (
         <>
           <StyledRoot>
             <Toolbar>
+            {searchHeader && <Searchbar/>}
                 <IconButton
                 sx={{
                     borderRadius: '50%',

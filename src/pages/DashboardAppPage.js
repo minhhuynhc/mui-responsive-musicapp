@@ -2,10 +2,13 @@ import { Box, Button, Card, CardActionArea, CardContent, CardMedia, Grid, IconBu
 import React, { useState } from 'react';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import { Container } from '@mui/system';
+import Header from '../layouts/dashboard/header';
 const data=[1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10]
 const DashboardAppPage = ({color='primary'}) => {
     const [mouseEnter, setMouseEnter] = useState(false)
     return (
+        <>
+            <Header/>
         
         <div style={{padding: 20, backgroundImage: 'linear-gradient(0deg, rgba(20,21,22,1) 90%, rgba(3,5,32,0.9612219887955182) 98%, rgba(2,20,62,0.9332107843137255) 100%)'}}>
         <Box sx={{height: 60}}></Box>
@@ -46,6 +49,7 @@ const DashboardAppPage = ({color='primary'}) => {
             </Grid>
             
         </div>
+        </>
     );
 };
 

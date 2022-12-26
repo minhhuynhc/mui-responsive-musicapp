@@ -8,7 +8,7 @@ import NowPlayingBar from "./playingBar";
 const DashboardLayout = () => {
   return (
     <>
-      <Header />
+      
       <NavBar />
       <NowPlayingBar/>
       <Box sx={{ 
