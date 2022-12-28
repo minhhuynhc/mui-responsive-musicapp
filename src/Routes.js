@@ -6,6 +6,7 @@ import ColectionPage from './pages/ColectionPage';
 import DashboardAppPage from './pages/DashboardAppPage';
 import Page404 from './pages/Page404';
 import SearchPage from './pages/SearchPage';
+import SignInPage from './pages/SignInPage';
 
 const Router = () => {
     const routes = useRoutes([
@@ -39,6 +40,10 @@ const Router = () => {
         {
           path: '404', 
           element: <Page404 />
+        },
+        {
+          path: 'signin',
+          element: <SignInPage/>
         },
         {
           path : '*',
