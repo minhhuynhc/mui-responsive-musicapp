@@ -23,63 +23,15 @@ import { Icon } from "@iconify/react";
 import { NavLink } from "react-router-dom";
 
 import "./style.css";
+import { useStateValue } from "../../../userData/StateProvider";
+import Playlists from "./Playlists";
 
-const playlistData = [
-  {
-    id: "1",
-    title: "My play list #1",
-  },
-  {
-    id: "2",
-    title: "My play list #2",
-  },
-  {
-    id: "3",
-    title: "My play list #3",
-  },
-  {
-    id: "4",
-    title: "My play list #4",
-  },
-  {
-    id: "5",
-    title: "My play list #5",
-  },
-  {
-    id: "1",
-    title: "My play list #1",
-  },
-  {
-    id: "2",
-    title: "My play list #2",
-  },
-  {
-    id: "3",
-    title: "My play list #3",
-  },
-  {
-    id: "4",
-    title: "My play list #4",
-  },
-  {
-    id: "5",
-    title: "My play list #5",
-  },
-];
 
 const StyledNavBar = styled("div")(({ theme }) => ({
   width: "100%",
 }));
 
-const Playlist = ({ title }) => {
-  return (
-    <ListItem disablePadding>
-      <ListItemButton sx={{ color: "greys" }}>
-        <ListItemText primary={title} sx={{ color: "gray" }} />
-      </ListItemButton>
-    </ListItem>
-  );
-};
+
 
 const NavBarSection = () => (
   <>
@@ -155,11 +107,7 @@ const NavBarSection = () => (
         overflow: "auto",
       }}
     >
-      <List sx={{}}>
-        {playlistData.map((playlist) => (
-          <Playlist title={playlist.title} />
-        ))}
-      </List>
+      <Playlists/>
     </Box>
   </>
 );
@@ -182,6 +130,7 @@ const renderContent = (
 
 const NavBar = ({ open, onCloseNavBar }) => {
   const isDesktop = useResponsive("up", "lg");
+  const [{Playlists}, dispatch] = useStateValue()
   return (
     <>
       <Drawer
