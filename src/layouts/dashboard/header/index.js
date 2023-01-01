@@ -71,7 +71,6 @@ const Header = ({ searchHeader }) => {
             <ArrowForwardIosIcon color="warning" />
           </IconButton>
           <Box sx={{ flexGrow: 1 }} />
-          {console.log({user})}
           {  token ? (
             <>
               <Button

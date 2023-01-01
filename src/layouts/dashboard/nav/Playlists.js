@@ -6,8 +6,8 @@ const Playlists = () => {
   const [{playlists}, dispatch] = useStateValue()
   return (
     <List sx={{}}>
-      {console.log({playlists})}
-        {playlists.items.map((playlist) => (
+      {/* {console.log({playlists})} */}
+        {playlists?.items.map((playlist) => (
           <Playlist title={playlist.name} />
         ))}
       </List>

@@ -11,55 +11,49 @@ const s = new SpotifyWebApi();
 
 function App() {
   const [{ token, user }, dispatch] = useStateValue();
-  const [cookie, setCookie, removeCookie] = useCookies(['token'])
+  const [cookie, setCookie, removeCookie] = useCookies(["token"]);
 
   // sessionStorage.setItem('token', null)
-  
+
   useEffect(() => {
     const hash = getTokenFromResponse();
     window.location.hash = "";
     let _token = hash.access_token;
-    console.log({_token})
+    console.log({ _token });
     if (_token) {
-      sessionStorage.setItem('token', _token)}
+      sessionStorage.setItem("token", _token);
+    }
 
-    if (sessionStorage.getItem('token')){
-      s.setAccessToken(sessionStorage.getItem('token'));
-      s.getMe().then((user) => {
-        console.log('khong co loi')
-        dispatch({
-
-          type: "SET_USER",
-          user,
-        });
-      })
-      .catch((err) => {console.log(err)});
-      user && s.getUserPlaylists(user.id).then((playlists)=>{
-        dispatch({
-          type: "SET_PLAYLISTS",
-          playlists,
-        });
-        console.log(playlists)
-      })
-      .catch((err) => {console.log(err)});
-      }
-      s.getPlaylist("37i9dQZF1DX9XIFQuFvzM4").then((response) =>{
-      dispatch({
-        type: "SET_DISCOVER_WEEKLY",
-        discover_weekly: response,
-      })
-      console.log({response})}
+    if (sessionStorage.getItem("token")) {
+      s.setAccessToken(sessionStorage.getItem("token"))
+      s.getMe()
+      .then((user) => {
+            dispatch({
+              type: "SET_USER",
+              user,
+            });
+            console.log(1);
+          })
+      .then(() =>
+        s.getUserPlaylists(user?.id).then((playlists) => {
+          dispatch({
+            type: "SET_PLAYLISTS",
+            playlists,
+          });
+          console.log(2);
+        })
       );
-      console.log('token in session:'+sessionStorage.getItem('token'))
-  }, [token, dispatch])
+      };
+    }
+  , [token, dispatch]);
   // console.log(!Boolean(sessionStorage.getItem('token')==='null'))
   // console.log({user})
- 
+
   return (
     <ThemeProvider>
-      <Router/>
+      <Router />
     </ThemeProvider>
-  ); 
+  );
 }
 
 export default App;
